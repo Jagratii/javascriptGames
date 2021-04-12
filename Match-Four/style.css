@@ -1,0 +1,35 @@
+.grid {
+    border: 4px solid;
+    height: 480px;
+    width: 560px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .grid div {
+    height: 80px;
+    width: 80px;
+  }
+  .player-one {
+    background-color:turquoise;
+    border-radius: 50px;
+  }
+  
+  .player-two {
+    background-color:rgb(247, 130, 149);
+    border-radius: 50px;
+  }
+
+  .h-2{
+      font-size: 40px;
+      background-color: black;
+      color: white;
+      width: 570px;
+      height: 50px;
+  }
+
+  #result{
+      width: 400px;
+      font-size: 40px;
+      color: turquoise;
+      background-color: yellow
+  }
