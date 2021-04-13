@@ -2,19 +2,19 @@ var movies = [
     "frozen","bahubali","inception","titanic", "parasite","avatar",
     "joker","dangal","tumbbad","lagaan","andhadhun","intersteller",
     "drishyam","kahaani"
-]
-
-let answer=''
-let maxWrong=6
-let mistakes=0
-let guessed =[]
-let wordStatus = null
-
-function randomWord(){
-answer=movies[Math.floor(Math.random() *movies.length)]
-}
-
-function generateButtons(){
+  ]
+  
+  let answer=''
+  let maxWrong=6
+  let mistakes=0
+  let guessed =[]
+  let wordStatus = null
+  
+  function randomWord(){
+  answer=movies[Math.floor(Math.random() *movies.length)]
+  }
+  
+  function generateButtons(){
     let buttonsHTML ='abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
       `
         <button
@@ -25,11 +25,11 @@ function generateButtons(){
       ` + letter + `
        </button>
        `).join('')
-
+  
     document.getElementById('keyboard').innerHTML = buttonsHTML   
-}
-
-function handleGuess(chosenLetter) {
+  }
+  
+  function handleGuess(chosenLetter) {
     guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
     document.getElementById(chosenLetter).setAttribute('disabled', true);
   
@@ -42,35 +42,35 @@ function handleGuess(chosenLetter) {
       checkIfGameLost();
       updateHangmanPicture();
     }
-}
-
-function updateHangmanPicture() {
+  }
+  
+  function updateHangmanPicture() {
     document.getElementById('hangman-image').src = './images/' + mistakes + '.jpg';
-}
-
-function checkIfGameWon() {
+  }
+  
+  function checkIfGameWon() {
     if (wordStatus === answer) {
       document.getElementById('keyboard').innerHTML = 'You Won!!!';
     }
-}
+  }
   
-function checkIfGameLost() {
+  function checkIfGameLost() {
     if (mistakes === maxWrong) {
       document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
       document.getElementById('keyboard').innerHTML = 'You Lost!!!';
     }
-}
-
-function guessedWord(){
+  }
+  
+  function guessedWord(){
     wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('')
     document.getElementById('wordSpotlight').innerHTML = wordStatus
-}
-
-function updateMistakes() {
+  }
+  
+  function updateMistakes() {
     document.getElementById('mistakes').innerHTML = mistakes;
-}
-
-function reset() {
+  }
+  
+  function reset() {
     mistakes = 0;
     guessed = [];
     document.getElementById('hangman-image').src = './images/0.jpg';
@@ -79,14 +79,14 @@ function reset() {
     guessedWord();
     updateMistakes();
     generateButtons();
-}
-
-
-document.getElementById('maxWrong').innerHTML = maxWrong
-
-
-
-
-generateButtons()
-randomWord()
-guessedWord()
+  }
+  
+  
+  document.getElementById('maxWrong').innerHTML = maxWrong
+  
+  
+  
+  
+  generateButtons()
+  randomWord()
+  guessedWord()
